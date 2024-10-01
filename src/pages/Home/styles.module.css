@@ -4,11 +4,13 @@
     background-color: #fff;
 }
 
-.darkTheme {
-    background-color: rgb(3, 27, 54);
-}
+/* .darkTheme {
+    background-color: #0D021A;
+    color: white;
+} */
 
 .welcome {
+    background-color: #141414 !important;
     width: 100%;
     height: calc(45vh - 50px);
     margin-bottom: 50px;
@@ -41,75 +43,23 @@
     font-weight: 500;
 }
 
-.search {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 5px;
+.typographySection{
+    font-family: "Poppins", system-ui;
+    font-size: clamp(1.2rem, 5vw, 1.4rem);
+    font-weight: 600;
+    font-style: normal;
 
-
-    position: absolute;
-    bottom: -45px;
-    left: 50%;
-    transform: translateX(-60%);
-
-    background-color: #fff;
-    padding: 5px;
-    margin: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 90vw;
-    max-width: 600px;
-    box-sizing: border-box;
-    margin-top: auto;
+    margin-left: 5px;
 }
 
-.filter {
-    padding: 5px;
-    border: 1px solid #f7f7f7;
-    border: none;
-    border-radius: 5px;
-
-    font-weight: bold;
-}
-
-.search input {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #f7f7f7;
-    border: none;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 14px;
-}
-
-.search input:hover {
-    background-color: rgb(248, 248, 248);
-}
-
-.search button {
-    width: 40%;
-    padding: 5px;
-
-    display: flex;
-    align-content: center;
-    justify-content: center;
-
-    background-color: rgb(35, 129, 236);
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.search button:hover {
-    background-color: rgb(29, 104, 191);
+.movies {
+    margin: 0 10px;
 }
 
 .cards {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     gap: 30px;
     padding-bottom: 5vh;
     min-height: 40vh;
@@ -122,8 +72,10 @@
     }
 
     .cards {
-        grid-template-columns: 1fr 1fr 1fr 1fr;
-        justify-items: center;
+        display: flex;
+        justify-content: space-between;
         gap: 10px;
+
+        max-width: 90%;
     }
 }

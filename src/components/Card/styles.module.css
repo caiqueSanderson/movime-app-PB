@@ -1,0 +1,13 @@
+.card {
+    background-color: whitesmoke;
+    border-radius: 5px;
+    width: 40vw;
+    height: 60vw;
+}
+
+@media screen and (min-width: 600px) {
+    .card{
+        width: 20vw;
+        height: 30vw;
+    }
+}
