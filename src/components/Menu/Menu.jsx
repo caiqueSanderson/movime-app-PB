@@ -18,20 +18,26 @@ export default function Menu(props) {
 
             <nav className={`${styles.menu} ${isMenuOpen ? styles.show : ""}`}>
                 <Link to="/" className={styles.menuItem}>
-                    <span><FaHouse /></span>
+                    <span className={styles.icons}><FaHouse /></span>
                     <span>Início</span>
                 </Link>
                 <Link to="/filmes" className={styles.menuItem}>
-                    <span><FaFilm /></span>
-                    Filmes
+                    <span className={styles.icons}><FaFilm /></span>
+                    <span>Filmes</span>
                 </Link>
                 <Link to="/series" className={styles.menuItem}>
-                    <span><FaTv /></span>
-                    Séries
+                    <span className={styles.icons}><FaTv /></span>
+                    <span>Séries</span>
                 </Link>
-                <Link to="/favoritos" className={styles.menuItem}>
-                    Favoritos
-                </Link>
+
+                <select className={styles.select} name="categories" id="categories">
+                    <option value="categories">Categorias</option>
+                    <option value="action">Ação</option>
+                    <option value="comedy">Comédia</option>
+                    <option value="drama">Drama</option>
+                    <option value="suspense">Suspense</option>
+                </select>
+
                 <span className={styles.menuItem} onClick={props.toggleTheme}>
                     <FaMoon />
                 </span>

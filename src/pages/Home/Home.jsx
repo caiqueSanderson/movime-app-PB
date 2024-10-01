@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
+
 import { FaAnglesRight } from "react-icons/fa6";
 import { restoredTheme } from "./themeUtils";
 
@@ -7,7 +9,21 @@ import styles from "./styles.module.css";
 import Menu from "../../components/Menu/Menu";
 import Card from "../../components/Card/Card";
 
+const apiKey = import.meta.env.REACT_APP_PRIVATE_API_KEY; // Alterar para process.env
+
 export default function Home() {
+    const [data, setData] = useState({});
+
+    async function restoreData() {
+        try {
+            const response = await axios.get(
+                `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=pt-BR`
+            );
+            setData(response)
+        } catch (error) {
+            console.error("Erro ao carregar DB", error);
+        }
+    }
     const [isLightTheme, setIsLigthTheme] = useState(true);
 
     function toggleTheme() {
@@ -18,6 +34,7 @@ export default function Home() {
 
     useEffect(() => {
         restoredTheme(setIsLigthTheme);
+        restoreData();
     }, []);
 
     return (
@@ -27,6 +44,16 @@ export default function Home() {
                 <div className={styles.text}>
                     <h2 className={styles.slogan}>Aproveite cada segundo</h2>
                     <p className={styles.subtitle}>Conosco seus momentos se tornam mágicas</p>
+                </div>
+
+                <div className={styles.search}>
+                    <input
+                        type="search"
+                        placeholder="Faça sua busca"
+                    // value={search}
+                    // onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <button type="submit">Buscar</button>
                 </div>
 
             </section>
@@ -57,6 +84,10 @@ export default function Home() {
                     <FaAnglesRight />
                 </div>
             </section>
+
+            <ul>
+                <li></li>
+            </ul>
         </div>
     )
 }

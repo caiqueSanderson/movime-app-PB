@@ -1,13 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap');
 
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #141414; 
-  color: #e0e0e0; 
+  background-color: #141414;
+  color: #e0e0e0;
   position: relative;
   height: auto;
 }
@@ -17,21 +16,33 @@
   font-weight: 700;
   font-style: normal;
   font-size: 1.5rem;
-  color: #e50914; 
+  color: #e50914;
+}
+
+.icons {
+  display: none;
 }
 
 .menu {
   width: 100vw;
-  background-color: #141414;
+  height: 100vh;
+  max-height: 0;
+
   display: flex;
   flex-direction: column;
-  max-height: 0;
+
   overflow: hidden;
   transition: max-height 0.4s ease;
   position: absolute;
-  top: 4rem; 
+  top: 4rem;
   left: 0;
   z-index: 2;
+
+  background-color: #141414;
+}
+
+.menu>* {
+  flex-grow: 1;
 }
 
 .menuItem {
@@ -39,12 +50,31 @@
   padding: 1rem 0;
   text-align: center;
   text-decoration: none;
-  color: #e0e0e0; 
+  color: #e0e0e0;
   transition: color 0.2s ease-in-out;
 }
 
 .menuItem:hover {
-  color: #e50914; 
+  color: #e50914;
+}
+
+.select {
+  margin: 0 20vw;
+
+  font-size: 1.5rem;
+
+  border: none;
+  border-radius: 4px;
+
+  background-color: #141414;
+  color: #e0e0e0;
+
+  text-align: center;
+}
+
+.select:focus {
+  outline: none;
+  border-color: #e50914;
 }
 
 .menuToggle {
@@ -52,35 +82,57 @@
   cursor: pointer;
   font-size: 2rem;
   color: #fff;
-  z-index: 3; 
+  z-index: 3;
 }
 
 .show {
-  max-height: 100vh; 
+  max-height: 100vh;
 }
 
 @media (min-width: 768px) {
   .header {
-    max-height: 20vw;
+    max-height: 15vw;
+    padding: 5px;
+  }
+
+  .logo {
+    margin-left: 5px;
   }
 
   .menu {
     display: flex;
     flex-direction: row;
+    align-items: center;
+
     max-height: none;
     height: 15vh;
+    width: 70vw;
 
     position: relative;
     top: auto;
   }
 
   .menuItem {
-    font-size: clamp(1rem,5vw,1.5rem);
+    display: flex;
+    gap: 5px;
+    font-size: clamp(0.8rem, 2vw, 1.3rem);
     margin: 0 1.5rem;
     padding: 0;
   }
 
+  .icons {
+    display: block;
+  }
+
+  .select {
+    width: auto;
+    padding: 0;
+    font-size: 1.1rem;
+    margin: 0;
+    color: #e0e0e0;
+  }
+
   .menuToggle {
-    display: none; 
+    display: none;
   }
 }
