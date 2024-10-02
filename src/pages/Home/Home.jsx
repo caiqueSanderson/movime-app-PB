@@ -9,17 +9,28 @@ import styles from "./styles.module.css";
 import Menu from "../../components/Menu/Menu";
 import Card from "../../components/Card/Card";
 
-const apiKey = import.meta.env.REACT_APP_PRIVATE_API_KEY; // Alterar para process.env
+const apiKey = import.meta.env.VITE_PRIVATE_API_KEY; // Alterar para process.env
 
 export default function Home() {
-    const [data, setData] = useState({});
+    const [dataMovies, setDataMovies] = useState({});
 
     async function restoreData() {
         try {
             const response = await axios.get(
-                `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=pt-BR`
+                `https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1`, {
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                    'Authorization': `Bearer ${apiKey}`,
+
+                }
+            }
             );
-            setData(response)
+
+            if (response.data && response.data.results) {
+                setDataMovies(response.data);
+            } else {
+                console.error("A resposta da API não contém 'results'.", response);
+            }
         } catch (error) {
             console.error("Erro ao carregar DB", error);
         }
@@ -70,9 +81,14 @@ export default function Home() {
             <section className={styles.movies}>
                 <h2 className={styles.typographySection}>Filmes</h2>
                 <div className={styles.cards}>
-                    <Card />
-                    <Card />
-                    <FaAnglesRight />
+                    {
+                        dataMovies && dataMovies.results ? (
+                            dataMovies.results.map((movie) => (
+                                <Card key={movie.id} title={movie.title} />
+                            ))
+                        ) : (
+                            <p>Nenhum filme encontrado.</p>
+                        )}
                 </div>
             </section>
 
@@ -81,7 +97,6 @@ export default function Home() {
                 <div className={styles.cards}>
                     <Card />
                     <Card />
-                    <FaAnglesRight />
                 </div>
             </section>
 

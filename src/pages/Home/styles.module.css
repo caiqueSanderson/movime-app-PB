@@ -109,17 +109,23 @@
 }
 
 .movies {
-    margin: 0 10px;
+    margin: 0 20px;
+
+    box-sizing: border-box;
+    overflow-x: auto;
 }
 
 .cards {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    gap: 10px;
+    flex-wrap: nowrap; 
+    width: max-content; 
+    scroll-snap-type: x mandatory; 
+    -webkit-overflow-scrolling: touch;
+}
 
-    gap: 30px;
-    padding-bottom: 5vh;
-    min-height: 40vh;
+.cards::-webkit-scrollbar {
+    display: none; 
 }
 
 @media(min-width:600px) {
