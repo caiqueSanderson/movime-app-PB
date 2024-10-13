@@ -120,6 +120,7 @@
     gap: 10px;
     flex-wrap: nowrap; 
     width: max-content; 
+    height: 80vh;
     scroll-snap-type: x mandatory; 
     -webkit-overflow-scrolling: touch;
 }
@@ -138,7 +139,5 @@
         display: flex;
         justify-content: space-between;
         gap: 10px;
-
-        max-width: 90%;
     }
 }

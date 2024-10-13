@@ -1,7 +1,10 @@
-import styles from "./styles.module.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import Dropdown from "../Dropdown/Dropdown";
+
 import { FaHouse, FaFilm, FaTv, FaMoon } from "react-icons/fa6";
+import styles from "./styles.module.css";
 
 export default function Menu(props) {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,13 +33,7 @@ export default function Menu(props) {
                     <span>Séries</span>
                 </Link>
 
-                <select className={styles.select} name="categories" id="categories">
-                    <option value="categories">Categorias</option>
-                    <option value="action">Ação</option>
-                    <option value="comedy">Comédia</option>
-                    <option value="drama">Drama</option>
-                    <option value="suspense">Suspense</option>
-                </select>
+                <Dropdown />
 
                 <span className={styles.menuItem} onClick={props.toggleTheme}>
                     <FaMoon />

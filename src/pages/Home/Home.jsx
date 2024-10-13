@@ -48,6 +48,8 @@ export default function Home() {
         restoreData();
     }, []);
 
+    console.log(dataMovies);
+
     return (
         <div className={isLightTheme ? styles.ligthTheme : styles.darkTheme}>
             <Menu toggleTheme={toggleTheme} />
@@ -84,7 +86,7 @@ export default function Home() {
                     {
                         dataMovies && dataMovies.results ? (
                             dataMovies.results.map((movie) => (
-                                <Card key={movie.id} title={movie.title} />
+                                <Card key={movie.id} title={movie.title} image={movie.poster_path} />
                             ))
                         ) : (
                             <p>Nenhum filme encontrado.</p>
