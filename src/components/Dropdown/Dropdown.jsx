@@ -28,9 +28,9 @@ export default function Dropdown({ onGenreSelect }) {
 
   return (
     <div className={styles.dropdown}>
-      <button className={styles.dropdownButton} onClick={handleToggleDropdown}>
+      <div className={styles.dropdownButton} onClick={handleToggleDropdown}>
         {selectedGenre} <FaAngleDown />
-      </button>
+      </div>
       {isOpen && (
         <ul className={styles.dropdownMenu}>
           {genres.map((genre) => (

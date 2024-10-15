@@ -79,6 +79,10 @@
     background-color: rgb(248, 248, 248);
 }
 
+.search input:focus-within {
+    border: 1px solid #e50914;
+}
+
 .search button {
     width: 40%;
     padding: 5px;
@@ -120,7 +124,7 @@
     gap: 10px;
     flex-wrap: nowrap; 
     width: max-content; 
-    height: 80vh;
+    max-height: 80vh;
     scroll-snap-type: x mandatory; 
     -webkit-overflow-scrolling: touch;
 }

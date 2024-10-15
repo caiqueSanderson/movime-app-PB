@@ -14,6 +14,9 @@ const apiKey = import.meta.env.VITE_PRIVATE_API_KEY; // Alterar para process.env
 export default function Home() {
     const [dataMovies, setDataMovies] = useState({});
 
+    const [search, setSearch] = useState("");
+    const searchLower = search.toLowerCase();
+
     async function restoreData() {
         try {
             const response = await axios.get(

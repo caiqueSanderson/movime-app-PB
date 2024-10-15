@@ -7,10 +7,8 @@ export default function Card({ title, image }) {
                 src={`https://image.tmdb.org/t/p/w500${image}`}
                 alt=""
             />
-            <div className={styles.text}>
-                <h2>{title}</h2>
-            </div>
-
+                <h2 className={styles.title}>{title}</h2>
+                <button className={styles.detailsButton}>Detalhes</button>
         </div>
     )
 }
