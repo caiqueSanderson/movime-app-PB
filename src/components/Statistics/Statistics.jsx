@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { authenticateAndGetAccountData } from "./autentication";
 
+import styles from "./styles.module.css";
+
 export default function Statistics() {
     const [sessionData, setSessionData] = useState(null);
 
@@ -20,7 +22,7 @@ export default function Statistics() {
     }, []);
 
     return (
-        <div>
+        <div className={styles.container}>
             <h1>Autenticação TMDB</h1>
             {sessionData ? (
                 <div>
@@ -28,7 +30,10 @@ export default function Statistics() {
                     <p>Account ID: {sessionData.accountId}</p>
                 </div>
             ) : (
-                <p>Autenticando...</p>
+                <div className={styles.containerLoading}>
+                    <p>Autenticando...</p>
+                <span className={styles.loading}></span>
+                </div>
             )}
         </div>
     );
