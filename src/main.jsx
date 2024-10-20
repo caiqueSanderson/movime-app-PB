@@ -5,12 +5,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import 'react-toastify/dist/ReactToastify.css';
 
 import App from './App.jsx';
+import Details from './pages/Details/index.jsx';
 import NotFound from './pages/not-found/Not-found.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+  },
+  {
+    path: "/details/:id",
+    element: <Details />,
   },
   {
     path: "*",

@@ -89,7 +89,7 @@ export default function Home() {
                     {
                         dataMovies && dataMovies.results ? (
                             dataMovies.results.map((movie) => (
-                                <Card key={movie.id} title={movie.title} image={movie.poster_path} />
+                                <Card key={movie.id} id={movie.id} title={movie.title} image={movie.poster_path} />
                             ))
                         ) : (
                             <p>Nenhum filme encontrado.</p>

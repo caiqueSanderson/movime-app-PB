@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 
 export default function NotFound() {
     const style = {
-        color:"rgb(10, 107, 218)",
+        color:"#e50914",
         fontSize:"2rem",
     }
     return (
