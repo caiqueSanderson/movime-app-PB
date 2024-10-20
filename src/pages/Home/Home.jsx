@@ -7,15 +7,24 @@ import { restoredTheme } from "./themeUtils";
 import styles from "./styles.module.css";
 
 import Menu from "../../components/Menu/Menu";
+import Statistics from "../../components/Statistics/Statistics";
 import Card from "../../components/Card/Card";
 
-const apiKey = import.meta.env.VITE_PRIVATE_API_KEY; // Alterar para process.env
+const token = import.meta.env.VITE_PRIVATE_TOKEN;
 
 export default function Home() {
+    const [isLightTheme, setIsLigthTheme] = useState(true);
     const [dataMovies, setDataMovies] = useState({});
+    const [myData, setMyData] = useState({})
 
     const [search, setSearch] = useState("");
     const searchLower = search.toLowerCase();
+
+    function toggleTheme() {
+        const themeNow = !isLightTheme;
+        setIsLigthTheme(themeNow);
+        localStorage.setItem("@theme", themeNow ? "true" : "false");
+    };
 
     async function restoreData() {
         try {
@@ -23,7 +32,7 @@ export default function Home() {
                 `https://api.themoviedb.org/3/movie/popular?language=pt-BR&page=1`, {
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
-                    'Authorization': `Bearer ${apiKey}`,
+                    'Authorization': `Bearer ${token}`,
 
                 }
             }
@@ -38,21 +47,12 @@ export default function Home() {
             console.error("Erro ao carregar DB", error);
         }
     }
-    const [isLightTheme, setIsLigthTheme] = useState(true);
 
-    function toggleTheme() {
-        const themeNow = !isLightTheme;
-        setIsLigthTheme(themeNow);
-        localStorage.setItem("@theme", themeNow ? "true" : "false");
-    };
 
     useEffect(() => {
         restoredTheme(setIsLigthTheme);
         restoreData();
     }, []);
-
-    console.log(dataMovies);
-
     return (
         <div className={isLightTheme ? styles.ligthTheme : styles.darkTheme}>
             <Menu toggleTheme={toggleTheme} />
@@ -83,6 +83,9 @@ export default function Home() {
             </div> */}
 
             {/* <Footer isLightTheme={isLightTheme} /> */}
+
+            <Statistics />
+
             <section className={styles.movies}>
                 <h2 className={styles.typographySection}>Filmes</h2>
                 <div className={styles.cards}>
@@ -105,9 +108,6 @@ export default function Home() {
                 </div>
             </section>
 
-            <ul>
-                <li></li>
-            </ul>
         </div>
     )
 }
