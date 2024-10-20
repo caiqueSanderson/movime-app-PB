@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { authenticateAndGetAccountData } from "./autentication";
 
+import Loading from "../Loading/Loading";
 import styles from "./styles.module.css";
 
 export default function Statistics() {
@@ -32,7 +33,7 @@ export default function Statistics() {
             ) : (
                 <div className={styles.containerLoading}>
                     <p>Autenticando...</p>
-                <span className={styles.loading}></span>
+                    <Loading />
                 </div>
             )}
         </div>
