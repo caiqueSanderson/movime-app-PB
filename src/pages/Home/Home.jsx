@@ -9,6 +9,7 @@ import styles from "./styles.module.css";
 import Menu from "../../components/Menu/Menu";
 import Statistics from "../../components/Statistics/Statistics";
 import Card from "../../components/Card/Card";
+import Loading from "../../components/Loading/Loading";
 
 const token = import.meta.env.VITE_PRIVATE_TOKEN;
 
@@ -95,7 +96,10 @@ export default function Home() {
                                 <Card key={movie.id} id={movie.id} title={movie.title} image={movie.poster_path} />
                             ))
                         ) : (
-                            <p>Nenhum filme encontrado.</p>
+                            <>
+                                <p>Carregando Filmes...</p>
+                                <Loading />
+                            </>
                         )}
                 </div>
             </section>
