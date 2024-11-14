@@ -7,7 +7,7 @@ import { restoredTheme } from "./themeUtils";
 import styles from "./styles.module.css";
 
 import Menu from "../../components/Menu/Menu";
-import Statistics from "../../components/Statistics/Statistics";
+import Authentication from "../../components/Authentication/Authentication";
 import Card from "../../components/Card/Card";
 import Loading from "../../components/Loading/Loading";
 
@@ -85,7 +85,7 @@ export default function Home() {
 
             {/* <Footer isLightTheme={isLightTheme} /> */}
 
-            <Statistics />
+            <Authentication />
 
             <section className={styles.movies}>
                 <h2 className={styles.typographySection}>Filmes</h2>
