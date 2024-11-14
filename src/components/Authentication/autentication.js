@@ -39,14 +39,11 @@ async function getAccountId(sessionId) {
     }
 }
 
-// Função de autenticação modificada para fornecer o link de autenticação separadamente
 export async function authenticateAndGetAccountData() {
     try {
-        // Primeira etapa: obtenha o requestToken e o link de autenticação
         const requestToken = await createRequestToken();
         const authenticationLink = `https://www.themoviedb.org/authenticate/${requestToken}`;
 
-        // Retorne o link de autenticação para o usuário
         return { requestToken, authenticationLink };
     } catch (error) {
         console.error("Erro no processo de autenticação:", error);
@@ -54,7 +51,6 @@ export async function authenticateAndGetAccountData() {
     }
 }
 
-// Função para prosseguir com a criação da sessão após a autenticação
 export async function completeAuthentication(requestToken) {
     try {
         const sessionId = await createSession(requestToken);

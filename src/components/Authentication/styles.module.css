@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    height: 40vh;
 }
 
 .containerLoading {
@@ -14,13 +15,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 25px;
     justify-content: center;
     margin-top: 20px;
 }
 
 .authenticationText {
-    font-size: 1rem;
+    font-size: clamp(1rem, 1.2rem, 1.5rem);
     color: #e0e0e0;
 }
 
@@ -35,15 +36,11 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.authLink:hover {
-    background-color: #e50914;
-    color: #1a1a1a;
-}
-
 .authenticationCompleteButton {
     background-color: #e50914;
     color: white;
     font-weight: bold;
+    font-size: clamp(1rem, 1.2rem, 1.5rem);
     margin-left: 5px;
     text-decoration: none;
     padding: 8px 12px;
@@ -51,7 +48,27 @@
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.authenticationCompleteButton:hover{
-    cursor: pointer;
-    color: #1a1a1a;
+@media(min-width:600px) {
+    .authenticationPrompt {
+        gap: 15px;
+    }
+
+    .authenticationText {
+        font-size: 1rem;
+    }
+
+    .authLink:hover {
+        background-color: #e50914;
+        color: #1a1a1a;
+    }
+
+    .authenticationCompleteButton {
+        font-size: 1rem;
+        padding: 8px 12px;
+    }
+
+    .authenticationCompleteButton:hover {
+        cursor: pointer;
+        color: #1a1a1a;
+    }
 }

@@ -16,7 +16,7 @@ export default function Authentication() {
                 const { requestToken, authenticationLink } = await authenticateAndGetAccountData();
                 setRequestToken(requestToken);
                 setAuthenticationLink(authenticationLink);
-                setLoading(false); // Termina o carregamento quando o link está pronto
+                setLoading(false); 
             } catch (error) {
                 console.error("Erro ao obter o link de autenticação:", error);
                 setLoading(false);
