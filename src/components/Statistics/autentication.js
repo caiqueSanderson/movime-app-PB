@@ -3,15 +3,23 @@ import axios from "axios";
 const apiKey = import.meta.env.VITE_PRIVATE_API_KEY;
 
 async function createRequestToken() {
-    try {
-        const response = await axios.get(
-            `https://api.themoviedb.org/3/authentication/token/new?api_key=${apiKey}`
-        );
-        return response.data.request_token;
-    } catch (error) {
-        console.error('Erro ao gerar token de requisição:', error);
-        throw error;
-    }
+    const url = `https://api.themoviedb.org/3/authentication/token/new?api_key=${apiKey}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const requestToken = data.request_token;
+            console.log(requestToken);
+        });
+    // try {
+    //     const response = await axios.get(
+    //         `https://api.themoviedb.org/3/authentication/token/new?api_key=${apiKey}`
+    //     );
+    //     return response.data.request_token;
+    // } catch (error) {
+    //     console.error('Erro ao gerar token de requisição:', error);
+    //     throw error;
+    // }
 }
 
 async function createSession(requestToken) {
