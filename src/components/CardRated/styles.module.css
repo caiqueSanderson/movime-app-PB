@@ -1,0 +1,104 @@
+:root {
+    --primary-color: #e50914;
+    --secondary-color: #141414;
+    --text-color-light: #E0E0E0;
+    --text-color-dark: #333333;
+    --border-color: #333333;
+}
+
+.card {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--secondary-color);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 1rem;
+    margin: 1rem;
+    gap: 0.8rem;
+    color: var(--text-color-light);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.dataPoster {
+    width: 80%;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.dataDetails {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+}
+
+.dataDetails h2 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.dataDetails p {
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    margin: 0;
+}
+
+.dataDetails p svg {
+    margin-right: 0.4rem;
+    color: var(--primary-color);
+}
+
+@media (min-width: 768px) {
+    .card {
+        width: 30%;
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .dataPoster {
+        width: 100%;
+    }
+
+    .dataDetails {
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .dataDetails h2 {
+        font-size: 1.5rem;
+    }
+
+    .dataDetails p {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card {
+        padding: 2rem;
+        gap: 2rem;
+        max-width: 20vw;
+    }
+
+    .dataPoster {
+        width: 70%;
+    }
+
+    .dataDetails h2 {
+        font-size: 1.8rem;
+    }
+
+    .dataDetails p {
+        font-size: 1.1rem;
+    }
+}

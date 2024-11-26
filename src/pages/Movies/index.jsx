@@ -2,9 +2,12 @@ import { useEffect, useState } from "react";
 
 import Menu from "../../components/Menu";
 import Loading from "../../components/Loading";
-import CardRated from "../../components/CardRated"
+import CardRated from "../../components/CardRated";
+import Statistics from "../../components/Statistics";
 
-import { getRatedMovies } from "../../services/ratedMovies";
+import { getRatedMovies, getMovieDetails } from "../../services/ratedMovies";
+import { calculateStats } from "../../services/statistics";
+import { getGenres } from "../../services/genreMovies";
 
 import styles from "./styles.module.css";
 
@@ -12,14 +15,32 @@ export default function Movies() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    console.log(movies)
+    const [totalHours, setTotalHours] = useState(0);
+    const [topGenres, setTopGenres] = useState([]);
 
     useEffect(() => {
         async function fetchRatedMovies() {
             setLoading(true);
             try {
-                const response = await getRatedMovies();
-                setMovies(response);
+                const [genresMap, ratedMovies] = await Promise.all([getGenres(), getRatedMovies()]);
+                const ratedMoviesWithRuntime = await Promise.all(
+                    ratedMovies.map(async (movie) => {
+                        const details = await getMovieDetails(movie.id);
+                        return {
+                            ...movie,
+                            runtime: details?.runtime || 0, 
+                        };
+                    })
+                );
+                const stats = calculateStats(ratedMoviesWithRuntime);
+                const mappedTopGenres = stats.topGenres.map(({ genreId, count }) => ({
+                    name: genresMap[genreId] || "Desconhecido",
+                    count,
+                }));
+
+                setMovies(ratedMoviesWithRuntime);
+                setTotalHours(stats.totalHours);
+                setTopGenres(mappedTopGenres);
             } catch (error) {
                 console.error("Erro ao buscar filmes assistidos", error);
             } finally {
@@ -33,7 +54,14 @@ export default function Movies() {
     return (
         <div className={styles.page}>
             <Menu />
-            <h1>Meus Filmes Assistidos</h1>
+
+            <section className={styles.containerStatistic}>
+                <h1 className={styles.title}>Estatísticas</h1>
+                <Statistics totalHours={totalHours} topGenres={topGenres} />
+            </section>
+
+
+            <h1 className={styles.title}>Meus Filmes Assistidos</h1>
 
             {loading ? (
                 <Loading />

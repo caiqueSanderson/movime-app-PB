@@ -3,8 +3,9 @@ import { FaClock } from "react-icons/fa";
 import styles from './styles.module.css';
 
 export default function CardRated({ data }) {
+    console.log(data)
     return (
-        <div key={data.id} className={styles.dataCard}>
+        <div key={data.id} className={styles.card}>
             <img
                 src={`https://image.tmdb.org/t/p/w500${data.poster_path}`}
                 alt={data.title}

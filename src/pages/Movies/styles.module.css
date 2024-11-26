@@ -1,7 +1,31 @@
+.page {
+    width: 100vw;
+}
+
+.containerStatistic {
+    min-height: 30vh;
+}
+
+.title {
+    text-align: center;
+}
+
 .moviesList {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
     flex-wrap: wrap;
-    gap: 10px
+    gap: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .containerStatistic {
+        min-height: 30vh;
+        align-content: center;
+    }
+
+    .title {
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
 }
