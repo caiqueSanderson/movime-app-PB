@@ -91,12 +91,12 @@
 
 @media (min-width: 768px) {
   .header {
-    max-height: 15vw;
+    max-height: 10vh;
     padding: 5px;
   }
 
   .logo {
-    margin-left: 5px;
+    margin-left: 15px;
   }
 
   .menu {
@@ -106,7 +106,7 @@
 
     max-height: none;
     height: 15vh;
-    width: 70vw;
+    width: 50vw;
 
     position: relative;
     top: auto;

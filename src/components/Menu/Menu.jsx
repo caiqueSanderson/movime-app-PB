@@ -24,16 +24,10 @@ export default function Menu(props) {
                     <span className={styles.icons}><FaHouse /></span>
                     <span>Início</span>
                 </Link>
-                <Link to="/filmes" className={styles.menuItem}>
+                <Link to="/movies" className={styles.menuItem}>
                     <span className={styles.icons}><FaFilm /></span>
                     <span>Filmes</span>
                 </Link>
-                <Link to="/series" className={styles.menuItem}>
-                    <span className={styles.icons}><FaTv /></span>
-                    <span>Séries</span>
-                </Link>
-
-                <Dropdown />
 
                 <span className={styles.menuItem} onClick={props.toggleTheme}>
                     <FaMoon />

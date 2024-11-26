@@ -5,7 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 // import 'react-toastify/dist/ReactToastify.css';
 
 import App from './App.jsx';
-import Details from './pages/Details/index.jsx';
+import Details from './pages/Details';
+import Movies from './pages/Movies';
 import NotFound from './pages/not-found/Not-found.jsx';
 
 const router = createBrowserRouter([
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/details/:id",
     element: <Details />,
+  },
+  {
+    path: "/movies",
+    element: <Movies />,
   },
   {
     path: "*",
