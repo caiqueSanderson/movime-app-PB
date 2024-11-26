@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
 import styles from "./styles.module.css";
-
 import Menu from "../../components/Menu/Menu";
 import Authentication from "../../components/Authentication/Authentication";
 import Card from "../../components/Card/Card";
@@ -15,6 +13,7 @@ export default function Home() {
     const [dataMovies, setDataMovies] = useState({ results: [] });
     const [filtered, setFiltered] = useState([]);
     const [search, setSearch] = useState("");
+    const [loading, setLoading] = useState(false);
 
     function toggleTheme() {
         const themeNow = !isLightTheme;
@@ -45,16 +44,34 @@ export default function Home() {
         }
     }
 
-    useEffect(() => {
-        if (search.trim() === "") {
-            setFiltered(dataMovies.results);
-        } else {
-            const filteredData = dataMovies.results.filter((item) =>
-                item.title.toLowerCase().includes(search.toLowerCase())
-            );
-            setFiltered(filteredData);
-        }
-    }, [search, dataMovies.results]);
+    async function searchMovies(query) {
+        if (!query.trim()) return;
+
+        setLoading(true);
+
+        setTimeout(async () => {
+            try {
+                const response = await axios.get(
+                    `https://api.themoviedb.org/3/search/movie?query=${query}&language=pt-BR&page=1`,
+                    {
+                        headers: {
+                            "Content-type": "application/json; charset=UTF-8",
+                            Authorization: `Bearer ${token}`,
+                        },
+                    }
+                );
+
+                if (response.data && response.data.results) {
+                    setFiltered(response.data.results);
+                }
+            } catch (error) {
+                console.error("Erro ao buscar filmes", error);
+            } finally {
+                setLoading(false);
+            }
+        }, 2000);
+    }
+
     useEffect(() => {
         restoreData();
     }, []);
@@ -76,14 +93,16 @@ export default function Home() {
                         value={search}
                         onChange={(e) => setSearch(e.target.value)}
                     />
-                    <button type="button" onClick={() => setSearch(search)}>Buscar</button>
+                    <button type="button" onClick={() => searchMovies(search)}>Buscar</button>
                 </div>
             </section>
 
             <section className={styles.movies}>
                 <h2 className={styles.typographySection}>Filmes</h2>
                 <div className={styles.cards}>
-                    {filtered.length > 0 ? (
+                    {loading ? (
+                        <Loading className={styles.loading}/>
+                    ) : filtered.length > 0 ? (
                         filtered.map((movie) => (
                             <Card
                                 key={movie.id}
@@ -93,10 +112,9 @@ export default function Home() {
                             />
                         ))
                     ) : (
-                        <>
-                            <p>{dataMovies.results.length === 0 ? "Carregando filmes..." : "Nenhum filme encontrado."}</p>
-                            {dataMovies.results.length === 0 && <Loading />}
-                        </>
+                        <div className={styles.containerEmpty}>
+                            <p className={styles.messageMovieSearch}>{dataMovies.results.length === 0 ? "Carregando filmes..." : "Nenhum filme encontrado."}</p>
+                        </div>
                     )}
                 </div>
             </section>

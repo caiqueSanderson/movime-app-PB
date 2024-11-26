@@ -6,8 +6,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import App from './App.jsx';
 import Details from './pages/Details';
-import Movies from './pages/Movies';
-import NotFound from './pages/not-found/Not-found.jsx';
+import Movies from './pages/Movies'
+import NotFound from './pages/not-found';
 
 const router = createBrowserRouter([
   {
