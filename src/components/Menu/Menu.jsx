@@ -24,9 +24,9 @@ export default function Menu(props) {
                     <span className={styles.icons}><FaHouse /></span>
                     <span>Início</span>
                 </Link>
-                <Link to="/movies" className={styles.menuItem}>
+                <Link to="/my-movies" className={styles.menuItem}>
                     <span className={styles.icons}><FaFilm /></span>
-                    <span>Filmes</span>
+                    <span>Estátisticas</span>
                 </Link>
 
                 <span className={styles.menuItem} onClick={props.toggleTheme}>

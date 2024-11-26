@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import styles from "./styles.module.css";
+
 import Menu from "../../components/Menu/Menu";
-import Authentication from "../../components/Authentication/Authentication";
+import Authentication from "../../services/Authentication/Authentication";
 import Card from "../../components/Card/Card";
 import Loading from "../../components/Loading/Loading";
+
+import styles from "./styles.module.css";
 
 const token = import.meta.env.VITE_PRIVATE_TOKEN;
 

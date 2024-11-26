@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { authenticateAndGetAccountData, completeAuthentication } from "./autentication";
 import { FaCheck } from "react-icons/fa6";
-import Loading from "../Loading/Loading";
+import Loading from "../../components/Loading/Loading";
 import styles from "./styles.module.css";
 
 export default function Authentication() {
@@ -32,6 +32,8 @@ export default function Authentication() {
         try {
             const { sessionId, accountId } = await completeAuthentication(requestToken);
             setSessionData({ sessionId, accountId });
+            localStorage.setItem('@sessionID', sessionId);
+            localStorage.setItem('@accountID', accountId);
         } catch (error) {
             console.error("Erro ao completar a autenticação:", error);
         } finally {
