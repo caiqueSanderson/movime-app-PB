@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { authenticateAndGetAccountData, completeAuthentication } from "./autentication";
+import { authenticateAndGetAccountData, completeAuthentication } from "../../services/authentication";
 import { FaCheck } from "react-icons/fa6";
-import Loading from "../../components/Loading/Loading";
+import Loading from "../Loading";
 import styles from "./styles.module.css";
 
 export default function Authentication() {

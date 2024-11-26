@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-import Menu from "../../components/Menu/Menu";
-import Authentication from "../../services/Authentication/Authentication";
-import Card from "../../components/Card/Card";
-import Loading from "../../components/Loading/Loading";
+import Menu from "../../components/Menu";
+import Authentication from "../../components/Authentication";
+import Card from "../../components/Card";
+import Loading from "../../components/Loading";
 
 import styles from "./styles.module.css";
 
@@ -103,7 +103,7 @@ export default function Home() {
                 <h2 className={styles.typographySection}>Filmes</h2>
                 <div className={styles.cards}>
                     {loading ? (
-                        <Loading className={styles.loading}/>
+                        <Loading className={styles.loading} />
                     ) : filtered.length > 0 ? (
                         filtered.map((movie) => (
                             <Card

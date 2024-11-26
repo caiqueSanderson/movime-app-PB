@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { FaClock } from "react-icons/fa";
 
-import Menu from "../../components/Menu/Menu";
-import Loading from "../../components/Loading/Loading";
+import Menu from "../../components/Menu";
+import Loading from "../../components/Loading";
+import CardRated from "../../components/CardRated"
 
-import { getRatedMovies } from "../../services/tmdb";
+import { getRatedMovies } from "../../services/ratedMovies";
 
 import styles from "./styles.module.css";
 
@@ -41,18 +41,7 @@ export default function Movies() {
                 <div className={styles.moviesList}>
                     {movies.length > 0 ? (
                         movies.map((movie) => (
-                            <div key={movie.id} className={styles.movieCard}>
-                                <img
-                                    src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                                    alt={movie.title}
-                                    className={styles.moviePoster}
-                                />
-                                <div className={styles.movieDetails}>
-                                    <h2>{movie.title}</h2>
-                                    <p>{movie.release_date}</p>
-                                    <p><FaClock /> {movie.runtime} min</p>
-                                </div>
-                            </div>
+                            <CardRated data={movie} />
                         ))
                     ) : (
                         <p>Você ainda não assistiu filmes ou não há filmes avaliados.</p>

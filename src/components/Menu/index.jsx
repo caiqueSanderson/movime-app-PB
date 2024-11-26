@@ -1,9 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import Dropdown from "../Dropdown/Dropdown";
-
-import { FaHouse, FaFilm, FaTv, FaMoon } from "react-icons/fa6";
+import { FaHouse, FaFilm, FaMoon } from "react-icons/fa6";
 import styles from "./styles.module.css";
 
 export default function Menu(props) {
