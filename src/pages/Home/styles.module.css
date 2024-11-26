@@ -4,10 +4,10 @@
     background-color: #fff;
 }
 
-/* .darkTheme {
+.darkTheme {
     background-color: #0D021A;
     color: white;
-} */
+}
 
 .welcome {
     background-color: #141414;
@@ -122,15 +122,15 @@
 .cards {
     display: flex;
     gap: 10px;
-    flex-wrap: nowrap; 
-    width: max-content; 
+    flex-wrap: nowrap;
+    width: max-content;
     max-height: 80vh;
-    scroll-snap-type: x mandatory; 
+    scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
 }
 
 .cards::-webkit-scrollbar {
-    display: none; 
+    display: none;
 }
 
 @media(min-width:600px) {
@@ -140,8 +140,13 @@
     }
 
     .cards {
-        display: flex;
-        justify-content: space-between;
-        gap: 10px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 35px;
+        width: 80vw;
+        max-height: none;
+        margin: 0 auto;
+        box-sizing: border-box;
     }
+
 }
