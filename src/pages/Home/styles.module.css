@@ -166,7 +166,7 @@
 @media(min-width:600px) {
     .welcome {
         width: 100%;
-        height: calc(55vh - 60px);
+        height: calc(55vh - 80px);
     }
 
     .cards {

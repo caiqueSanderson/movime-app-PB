@@ -14,11 +14,19 @@ import styles from "./styles.module.css";
 export default function Movies() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [notAuthenticated, setNotAuthenticated] = useState(false);
 
     const [totalHours, setTotalHours] = useState(0);
     const [topGenres, setTopGenres] = useState([]);
 
     useEffect(() => {
+        const sessionId = localStorage.getItem("sessionId");
+        if (!sessionId) {
+            setNotAuthenticated(true);
+            setLoading(false);
+            return;
+        }
+
         async function fetchRatedMovies() {
             setLoading(true);
             try {
@@ -28,7 +36,7 @@ export default function Movies() {
                         const details = await getMovieDetails(movie.id);
                         return {
                             ...movie,
-                            runtime: details?.runtime || 0, 
+                            runtime: details?.runtime || 0,
                         };
                     })
                 );
@@ -55,26 +63,35 @@ export default function Movies() {
         <div className={styles.page}>
             <Menu />
 
-            <section className={styles.containerStatistic}>
-                <h1 className={styles.title}>Estatísticas</h1>
-                <Statistics totalHours={totalHours} topGenres={topGenres} />
-            </section>
-
-
-            <h1 className={styles.title}>Meus Filmes Assistidos</h1>
-
-            {loading ? (
-                <Loading className={styles.loading}/>
-            ) : (
-                <div className={styles.moviesList}>
-                    {movies.length > 0 ? (
-                        movies.map((movie) => (
-                            <CardRated data={movie} />
-                        ))
-                    ) : (
-                        <p>Você ainda não assistiu filmes ou não há filmes avaliados.</p>
-                    )}
+            {notAuthenticated ? (
+                <div className={styles.containerMessage}>
+                    <p>Você não está autenticado. Faça login para visualizar os filmes.</p>
                 </div>
+            ) : loading ? (
+                <div className={styles.containerLoading}>
+                    <Loading />
+                </div>
+            ) : (
+                <>
+                    <section className={styles.containerStatistic}>
+                        <h1 className={styles.title}>Estatísticas</h1>
+                        <Statistics totalHours={totalHours} topGenres={topGenres} />
+                    </section>
+
+                    <h1 className={styles.title}>Meus Filmes Assistidos</h1>
+
+                    <div className={styles.moviesList}>
+                        {movies.length > 0 ? (
+                            movies.map((movie) => (
+                                <CardRated data={movie} />
+                            ))
+                        ) : (
+                            <div className={styles.containerMessage}>
+                                <p>Você ainda não assistiu filmes ou não há filmes avaliados.</p>
+                            </div>
+                        )}
+                    </div>
+                </>
             )}
         </div>
     );

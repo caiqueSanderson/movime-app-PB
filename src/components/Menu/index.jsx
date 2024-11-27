@@ -9,12 +9,12 @@ export default function Menu(props) {
 
     function toggleMenu() {
         setIsMenuOpen(!isMenuOpen);
-    };
+    }
 
     return (
         <header className={styles.header}>
             <div className={styles.logo}>
-                <span>Movime</span>
+                <span>MoviMe</span>
             </div>
 
             <nav className={`${styles.menu} ${isMenuOpen ? styles.show : ""}`}>
@@ -24,7 +24,7 @@ export default function Menu(props) {
                 </Link>
                 <Link to="/my-movies" className={styles.menuItem}>
                     <span className={styles.icons}><FaFilm /></span>
-                    <span>Estátisticas</span>
+                    <span>Estatísticas</span>
                 </Link>
 
                 <span className={styles.menuItem} onClick={props.toggleTheme}>
