@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
@@ -7,15 +7,17 @@ import { FaAngleLeft } from "react-icons/fa";
 import styles from './styles.module.css';
 
 const token = import.meta.env.VITE_PRIVATE_TOKEN;
+
 export default function Details() {
     const objectId = useParams();
     const navigate = useNavigate();
+
+    const [dataMovie, setDataMovie] = useState({});
 
     function navigateHome() {
         navigate('/')
     }
 
-    const [dataMovie, setDataMovie] = useState({});
     async function restoreData() {
         try {
             const response = await axios.get(
@@ -23,7 +25,6 @@ export default function Details() {
                 headers: {
                     'Content-type': 'application/json; charset=UTF-8',
                     'Authorization': `Bearer ${token}`,
-
                 }
             }
             );
@@ -42,7 +43,6 @@ export default function Details() {
         restoreData();
     }, []);
 
-    console.log(dataMovie)
     return (
         <div className={styles.page}>
             <button

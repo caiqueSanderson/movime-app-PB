@@ -1,7 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { authenticateAndGetAccountData, completeAuthentication } from "../../services/authentication";
+import { useEffect, useState } from "react";
 import { FaCheck } from "react-icons/fa6";
+
+import { authenticateAndGetAccountData, completeAuthentication } from "../../services/authentication";
+
 import Loading from "../Loading";
+
 import styles from "./styles.module.css";
 
 export default function Authentication({ setAuthenticated }) {
@@ -26,7 +29,7 @@ export default function Authentication({ setAuthenticated }) {
         fetchAuthenticationLink();
     }, []);
 
-    const handleCompleteAuthentication = async () => {
+    const completeAuthentication = async () => {
         setLoading(true);
         try {
             const { sessionId, accountId } = await completeAuthentication(requestToken);
@@ -66,7 +69,7 @@ export default function Authentication({ setAuthenticated }) {
                             Autenticar
                         </a>
                     </p>
-                    <button onClick={handleCompleteAuthentication} className={styles.authenticationCompleteButton}>
+                    <button onClick={completeAuthentication} className={styles.authenticationCompleteButton}>
                         Completar Autenticação
                     </button>
                 </div>

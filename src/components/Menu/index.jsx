@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { FaHouse, FaFilm, FaMoon } from "react-icons/fa6";
+
 import styles from "./styles.module.css";
 
 export default function Menu(props) {
@@ -22,6 +23,7 @@ export default function Menu(props) {
                     <span className={styles.icons}><FaHouse /></span>
                     <span>Início</span>
                 </Link>
+                
                 <Link to="/my-movies" className={styles.menuItem}>
                     <span className={styles.icons}><FaFilm /></span>
                     <span>Estatísticas</span>
