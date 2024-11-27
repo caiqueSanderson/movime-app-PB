@@ -1,9 +1,6 @@
+# MoviMe
 
-# noTime
-
-Website desenvolvido em React.js
-
-Website criado de forma totalmente a dedo, utilizando a caracteristica dos componentes do React, Hooks, React-Router-Dom, Nanoid, React-Modal.
+Website desenvolvido em React.js para o gerenciamento e exibição de filmes assistidos. Este projeto foi criado utilizando componentes reutilizáveis, hooks e bibliotecas modernas para React.
 
 ## Índice
 
@@ -17,6 +14,8 @@ Website criado de forma totalmente a dedo, utilizando a caracteristica dos compo
 - [Licença](#licença)
 - [Contato](#contato)
 
+---
+
 ## Visão Geral
 
 ### Demonstração
@@ -25,23 +24,29 @@ Website criado de forma totalmente a dedo, utilizando a caracteristica dos compo
 
 ### Descrição
 
-Website de apresentação dos projetos e demonstração de hard e soft skills
+O MoviMe é uma aplicação que permite ao usuário gerenciar os filmes já assistidos e visualizar estatísticas baseadas nos dados cadastrados, como tempo total de filmes assistidos e gêneros mais vistos.
+
+---
 
 ## Instalação
 
 ### Pré-requisitos
 
-Liste as ferramentas necessárias para rodar o projeto (por exemplo, Node.js, Git).
+Antes de começar, certifique-se de ter instalado:
+
+- **Node.js** (versão 14 ou superior)
+- **NPM** ou **Yarn**
+- **Git**
 
 ### Passos para Instalação
 
 1. Clone o repositório: 
    ```bash
-   git clone https://github.com/caiqueSanderson/at-react-fundamentals.git
+   git clone https://github.com/caiqueSanderson/pb-no-time.git
 
 2. Navegue até o diretório do projeto:
    ```bash
-   cd booking-hotel
+   cd no-time
 
 3. Instale as dependências:
     ```bash
@@ -59,19 +64,74 @@ Execute o código abaixo para rodar o projeto:
 
 ## Funcionalidades
 
+-  Listagem de filmes já assistidos.
+-  Exibição de estatísticas como:
+-     Total de horas assistidas.
+-     Gêneros mais assistidos.
+-  Busca de informações detalhadas dos filmes consumindo APIs externas.
+-  Layout responsivo e moderno.
+-  Componente de loading enquanto os dados são carregados.
+
 ## Estrutura das pastas
 
+src/
+│
+├── components/      
+│   ├── Menu/
+│   ├── Loading/
+│   ├── CardRated/
+│   ├── Card/
+│   ├── Statistics/
+│   └── Authentication/
+│
+├── pages/           
+│   ├── Movies/
+│   ├── Details/
+│   ├── Home/
+│   └── not-found/
+│
+├── services/     
+│   ├── authentication/   
+│   ├── ratedMovies/
+│   ├── genreMovies/
+│   ├── statistics/
+│   └── theme/
+│
+├── App.jsx         
+├── main.jsx         
+└── App.css
+
 ## Tecnologias Utilizadas
-    React.Js
-    JavaScript
-    HTML
-    CSS
-    Git
-    GitHub
+    React.js: Biblioteca principal para construção da interface.
+    JavaScript (ES6): Linguagem de programação utilizada.
+    HTML5: Estruturação da página.
+    CSS3: Estilização da aplicação.
+    React Router Dom: Gerenciamento de rotas.
+    Axios: Consumo de APIs.
+    React Hooks: Gerenciamento de estado e ciclos de vida.
+    Git/GitHub: Controle de versão.
 
 ## Contribuição
 
+1. Faça um fork do projeto.
+
+2. Crie uma branch para sua feature:
+   ```bash
+   git checkout -b minha-feature
+
+3. Commit suas mudanças:
+    ```bash
+   git commit -m "Adiciona minha nova feature"
+
+4. Envie para o repositório:
+   ```bash
+   git push origin minha-feature
+
+5. Abra um Pull Request.
+
 ## Licença
+
+Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
 
 ## Contato
 Se precisar de mais informações, entre em contato:
