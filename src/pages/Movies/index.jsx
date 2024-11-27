@@ -64,7 +64,7 @@ export default function Movies() {
             <h1 className={styles.title}>Meus Filmes Assistidos</h1>
 
             {loading ? (
-                <Loading />
+                <Loading className={styles.loading}/>
             ) : (
                 <div className={styles.moviesList}>
                     {movies.length > 0 ? (
