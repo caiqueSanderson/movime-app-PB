@@ -41,11 +41,11 @@ Antes de começar, certifique-se de ter instalado:
 ### Passos para Instalação
 
 1. Clone o repositório: 
-   ```bash
+    ```bash
    git clone https://github.com/caiqueSanderson/pb-no-time.git
 
 2. Navegue até o diretório do projeto:
-   ```bash
+    ```bash
    cd no-time
 
 3. Instale as dependências:
@@ -53,63 +53,64 @@ Antes de começar, certifique-se de ter instalado:
    npm i
 
 4. Inicie o servidor local:
-   ```bash
+    ```bash
    npm start
 
 ## Uso
 
 Execute o código abaixo para rodar o projeto:
     ```bash
-    npm run dev
+   npm run dev
 
 ## Funcionalidades
 
--  Listagem de filmes já assistidos.
--  Exibição de estatísticas como:
--     Total de horas assistidas.
--     Gêneros mais assistidos.
--  Busca de informações detalhadas dos filmes consumindo APIs externas.
--  Layout responsivo e moderno.
--  Componente de loading enquanto os dados são carregados.
+- Listagem de filmes já assistidos.
+- Exibição de estatísticas como:
+-  Total de horas assistidas.
+-  Gêneros mais assistidos.
+- Busca de informações detalhadas dos filmes consumindo APIs externas.
+- Layout responsivo e moderno.
+- Componente de loading enquanto os dados são carregados.
 
-## Estrutura das pastas
+## Estrutura de Pastas
 
+```plaintext
 src/
+├── components/      # Componentes reutilizáveis da aplicação
+│   ├── Menu/         # Menu de navegação
+│   ├── Loading/      # Indicador de carregamento
+│   ├── CardRated/    # Card para exibição de filmes avaliados
+│   ├── Card/         # Componente genérico de card
+│   ├── Statistics/   # Componente para exibir estatísticas
+│   └── Authentication/ # Gerenciamento de autenticação
 │
-├── components/      
-│   ├── Menu/
-│   ├── Loading/
-│   ├── CardRated/
-│   ├── Card/
-│   ├── Statistics/
-│   └── Authentication/
+├── pages/           # Páginas principais
+│   ├── Movies/       # Página de filmes avaliados
+│   ├── Details/      # Página com detalhes de um filme
+│   ├── Home/         # Página inicial
+│   └── not-found/    # Página para erros 404
 │
-├── pages/           
-│   ├── Movies/
-│   ├── Details/
-│   ├── Home/
-│   └── not-found/
+├── services/        # Serviços para comunicação com APIs
+│   ├── authentication/ # Serviços de autenticação
+│   ├── ratedMovies/     # Serviços relacionados aos filmes avaliados
+│   ├── genreMovies/     # Serviços de busca de gêneros
+│   ├── statistics/      # Serviços para cálculo de estatísticas
+│   └── theme/           # Serviços relacionados a temas da aplicação
 │
-├── services/     
-│   ├── authentication/   
-│   ├── ratedMovies/
-│   ├── genreMovies/
-│   ├── statistics/
-│   └── theme/
-│
-├── App.jsx         
-├── main.jsx         
-└── App.css
+├── App.jsx          # Componente principal da aplicação
+├── main.jsx         # Ponto de entrada da aplicação
+└── App.css          # Estilos globais
 
 ## Tecnologias Utilizadas
-    React.js: Biblioteca principal para construção da interface.
-    JavaScript (ES6): Linguagem de programação utilizada.
-    HTML5: Estruturação da página.
-    CSS3: Estilização da aplicação.
-    React Router Dom: Gerenciamento de rotas.
-    Axios: Consumo de APIs.
-    React Hooks: Gerenciamento de estado e ciclos de vida.
-    Git/GitHub: Controle de versão.
+
+- React.js: Biblioteca principal para construção da interface.
+- JavaScript (ES6): Linguagem de programação utilizada.
+- HTML5: Estruturação da página.
+- CSS3: Estilização da aplicação.
+- React Router Dom: Gerenciamento de rotas.
+- Axios: Consumo de APIs.
+- React Hooks: Gerenciamento de estado e ciclos de vida.
+- Git/GitHub: Controle de versão.
 
 ## Contribuição
 
