@@ -58,7 +58,7 @@ Antes de começar, certifique-se de ter instalado:
 
 ## Uso
 
-Execute o código abaixo para rodar o projeto:
+1. Execute o código abaixo para rodar o projeto:
     ```bash
    npm run dev
 
@@ -100,6 +100,7 @@ src/
 ├── App.jsx          # Componente principal da aplicação
 ├── main.jsx         # Ponto de entrada da aplicação
 └── App.css          # Estilos globais
+```
 
 ## Tecnologias Utilizadas
 
