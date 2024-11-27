@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 import Menu from "../../components/Menu";
-import Authentication from "../../components/Authentication";
 import Card from "../../components/Card";
 import Loading from "../../components/Loading";
 
@@ -120,8 +119,6 @@ export default function Home() {
                     )}
                 </div>
             </section>
-
-            <Authentication />
         </div>
     );
 }

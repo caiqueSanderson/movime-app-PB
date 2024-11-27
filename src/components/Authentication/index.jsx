@@ -4,11 +4,11 @@ import { FaCheck } from "react-icons/fa6";
 import Loading from "../Loading";
 import styles from "./styles.module.css";
 
-export default function Authentication() {
-    const [sessionData, setSessionData] = useState(null);
+export default function Authentication({ setAuthenticated }) {
     const [authenticationLink, setAuthenticationLink] = useState(null);
     const [requestToken, setRequestToken] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [authenticated, setLocalAuthenticated] = useState(false);
 
     useEffect(() => {
         async function fetchAuthenticationLink() {
@@ -16,9 +16,9 @@ export default function Authentication() {
                 const { requestToken, authenticationLink } = await authenticateAndGetAccountData();
                 setRequestToken(requestToken);
                 setAuthenticationLink(authenticationLink);
-                setLoading(false); 
             } catch (error) {
                 console.error("Erro ao obter o link de autenticação:", error);
+            } finally {
                 setLoading(false);
             }
         }
@@ -28,12 +28,12 @@ export default function Authentication() {
 
     const handleCompleteAuthentication = async () => {
         setLoading(true);
-
         try {
             const { sessionId, accountId } = await completeAuthentication(requestToken);
-            setSessionData({ sessionId, accountId });
-            localStorage.setItem('@sessionID', sessionId);
-            localStorage.setItem('@accountID', accountId);
+            localStorage.setItem("@sessionID", sessionId);
+            localStorage.setItem("@accountID", accountId);
+            setAuthenticated(true);
+            setLocalAuthenticated(true);
         } catch (error) {
             console.error("Erro ao completar a autenticação:", error);
         } finally {
@@ -41,37 +41,37 @@ export default function Authentication() {
         }
     };
 
+    if (authenticated) {
+        return (
+            <div>
+                <p>Autenticado com sucesso!</p>
+                <FaCheck style={{ color: "#008000" }} />
+            </div>
+        );
+    }
+
     return (
         <div className={styles.container}>
             <h1>Autenticação TMDB</h1>
-            {sessionData ? (
-                <div>
-                    <p>Autenticado</p>
-                    <FaCheck style={{ color: "#008000" }} />
+            {loading ? (
+                <div className={styles.containerLoading}>
+                    <p>Carregando...</p>
+                    <Loading />
+                </div>
+            ) : authenticationLink ? (
+                <div className={styles.authenticationPrompt}>
+                    <p className={styles.authenticationText}>
+                        Clique para autenticar:{" "}
+                        <a href={authenticationLink} target="_blank" rel="noopener noreferrer" className={styles.authLink}>
+                            Autenticar
+                        </a>
+                    </p>
+                    <button onClick={handleCompleteAuthentication} className={styles.authenticationCompleteButton}>
+                        Completar Autenticação
+                    </button>
                 </div>
             ) : (
-                <div className={styles.containerLoading}>
-                    {loading ? (
-                        <div>
-                            <p>Gerando link de autenticação...</p>
-                            <Loading />
-                        </div>
-                    ) : authenticationLink ? (
-                        <div className={styles.authenticationPrompt}>
-                            <p className={styles.authenticationText}>
-                                Clique para autenticar:{" "}
-                                <a href={authenticationLink} target="_blank" rel="noopener noreferrer" className={styles.authLink}>
-                                    Autenticar
-                                </a>
-                            </p>
-                            <button onClick={handleCompleteAuthentication} className={styles.authenticationCompleteButton}>
-                                Completar Autenticação
-                            </button>
-                        </div>
-                    ) : (
-                        <p>Erro ao gerar link de autenticação. Tente novamente.</p>
-                    )}
-                </div>
+                <p>Erro ao gerar link de autenticação. Tente novamente.</p>
             )}
         </div>
     );

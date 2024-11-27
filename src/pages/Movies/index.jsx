@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import Menu from "../../components/Menu";
 import Loading from "../../components/Loading";
+import Authentication from "../../components/Authentication";
 import CardRated from "../../components/CardRated";
 import Statistics from "../../components/Statistics";
 
@@ -13,17 +14,16 @@ import styles from "./styles.module.css";
 
 export default function Movies() {
     const [movies, setMovies] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [notAuthenticated, setNotAuthenticated] = useState(false);
+    const [loading, setLoading] = useState(false);
+    const [authenticated, setAuthenticated] = useState(true);
 
     const [totalHours, setTotalHours] = useState(0);
     const [topGenres, setTopGenres] = useState([]);
 
     useEffect(() => {
-        const sessionId = localStorage.getItem("sessionId");
+        const sessionId = localStorage.getItem("@sessionID");
         if (!sessionId) {
-            setNotAuthenticated(true);
-            setLoading(false);
+            setAuthenticated(false);
             return;
         }
 
@@ -63,8 +63,9 @@ export default function Movies() {
         <div className={styles.page}>
             <Menu />
 
-            {notAuthenticated ? (
+            {!authenticated ? (
                 <div className={styles.containerMessage}>
+                    <Authentication setAuthenticated={setAuthenticated} />
                     <p>Você não está autenticado. Faça login para visualizar os filmes.</p>
                 </div>
             ) : loading ? (
@@ -83,7 +84,7 @@ export default function Movies() {
                     <div className={styles.moviesList}>
                         {movies.length > 0 ? (
                             movies.map((movie) => (
-                                <CardRated data={movie} />
+                                <CardRated key={movie.id} data={movie} />
                             ))
                         ) : (
                             <div className={styles.containerMessage}>
