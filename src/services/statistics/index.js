@@ -1,4 +1,3 @@
-
 export function calculateStats(moviesData) {
     let totalMinutes = 0;
     let genreCount = {};
