@@ -29,9 +29,10 @@ export default function Authentication({ setAuthenticated }) {
         fetchAuthenticationLink();
     }, []);
 
-    const completeAuthentication = async () => {
+    const completeAuthenticationSessionAndAccountId = async () => {
         setLoading(true);
         try {
+            console.log(requestToken)
             const { sessionId, accountId } = await completeAuthentication(requestToken);
             localStorage.setItem("@sessionID", sessionId);
             localStorage.setItem("@accountID", accountId);
@@ -69,7 +70,7 @@ export default function Authentication({ setAuthenticated }) {
                             Autenticar
                         </a>
                     </p>
-                    <button onClick={completeAuthentication} className={styles.authenticationCompleteButton}>
+                    <button onClick={completeAuthenticationSessionAndAccountId} className={styles.authenticationCompleteButton}>
                         Completar Autenticação
                     </button>
                 </div>

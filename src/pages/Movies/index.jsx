@@ -10,17 +10,28 @@ import { getRatedMovies, getMovieDetails } from "../../services/ratedMovies";
 import { calculateStats } from "../../services/statistics";
 import { getGenres } from "../../services/genreMovies";
 
+import { restoredTheme } from "../../services/theme";
+
 import styles from "./styles.module.css";
 
 export default function Movies() {
     const [movies, setMovies] = useState([]);
     const [loading, setLoading] = useState(false);
     const [authenticated, setAuthenticated] = useState(true);
+    const [isLigthTheme, setIsLigthTheme] = useState(true);
 
     const [totalHours, setTotalHours] = useState(0);
     const [topGenres, setTopGenres] = useState([]);
 
+    function toggleTheme() {
+        const themeNow = !isLightTheme;
+        setIsLigthTheme(themeNow);
+        localStorage.setItem("@theme", themeNow ? "true" : "false");
+    }
+    
     useEffect(() => {
+        restoredTheme(setIsLigthTheme);
+
         const sessionId = localStorage.getItem("@sessionID");
         if (!sessionId) {
             setAuthenticated(false);
@@ -57,11 +68,11 @@ export default function Movies() {
         }
 
         fetchRatedMovies();
-    }, []);
+    }, [authenticated]);
 
     return (
-        <div className={styles.page}>
-            <Menu />
+        <div className={[styles.page, isLigthTheme ? styles.ligthTheme : styles.darkTheme]}>
+            <Menu toggleTheme={toggleTheme}/>
 
             {!authenticated ? (
                 <div className={styles.containerMessage}>

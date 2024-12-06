@@ -82,7 +82,7 @@ export default function Home() {
             <Menu toggleTheme={toggleTheme} />
 
             <section className={styles.welcome}>
-                
+
                 <div className={styles.text}>
                     <h2 className={styles.slogan}>Aproveite cada segundo</h2>
                     <p className={styles.subtitle}>Conosco seus momentos se tornam mágicos</p>

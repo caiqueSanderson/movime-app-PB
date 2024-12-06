@@ -4,6 +4,16 @@
     padding-top: 60px;
 }
 
+.lightTheme {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.darkTheme {
+    background-color: #0D021A;
+    color: white;
+}
+
 .containerStatistic {
     min-height: 30vh;
     margin-top: 40px;
@@ -42,6 +52,7 @@
     .containerStatistic {
         min-height: 30vh;
         align-content: center;
+        margin-top: 80px;
     }
 
     .title {

@@ -7,6 +7,7 @@ const accountId = localStorage.getItem("@accountID");
 
 export async function getRatedMovies() {
     try {
+        console.log(accountId,sessionId)
         const response = await axios.get(
             `https://api.themoviedb.org/3/account/${accountId}/rated/movies?language=pt-BR&page=1&session_id=${sessionId}`,
             {
