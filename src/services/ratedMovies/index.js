@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const token = import.meta.env.VITE_PRIVATE_TOKEN;
-const apiKey = import.meta.env.VITE_PRIVATE_API_KEY;
+const token = localStorage.getItem("VITE_PRIVATE_TOKEN");
+const apiKey = localStorage.getItem("VITE_PRIVATE_API_KEY");
 const sessionId = localStorage.getItem("@sessionID");
 const accountId = localStorage.getItem("@accountID");
 
