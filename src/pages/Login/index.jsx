@@ -16,8 +16,8 @@ export default function Login() {
       return;
     }
 
-    localStorage.setItem("VITE_PRIVATE_TOKEN", token);
-    localStorage.setItem("VITE_PRIVATE_API_KEY", apiKey);
+    localStorage.setItem("@VITE_PRIVATE_TOKEN", token);
+    localStorage.setItem("@VITE_PRIVATE_API_KEY", apiKey);
 
     navigate("/");
   };

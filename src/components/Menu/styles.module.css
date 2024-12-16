@@ -1,14 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Martel+Sans:wght@200;300;400;600;700;800;900&display=swap");
 
 .header {
   width: 100vw;
+  max-height: 75px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   background-color: #141414;
   color: #e0e0e0;
-  position: fixed; 
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
@@ -36,7 +37,7 @@
 
 .menu.show {
   height: 100vh;
-  max-height: 100vh; 
+  max-height: 100vh;
 }
 
 .menuItem {
@@ -66,9 +67,10 @@
 
 @media (min-width: 768px) {
   .header {
-    position: fixed; 
+    position: fixed;
     top: 0;
-    padding: 0.5rem 1rem;
+    padding: 1rem 1rem;
+    max-height: 90px;
   }
 
   .menu {
@@ -88,6 +90,6 @@
   }
 
   .menuToggle {
-    display: none; 
+    display: none;
   }
 }

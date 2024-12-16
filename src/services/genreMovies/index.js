@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_KEY = localStorage.getItem("VITE_PRIVATE_API_KEY");
+const API_KEY = localStorage.getItem("@VITE_PRIVATE_API_KEY");
 const url = "https://api.themoviedb.org/3";
 
 export async function getGenres() {

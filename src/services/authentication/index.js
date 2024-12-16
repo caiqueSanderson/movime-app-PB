@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiKey = localStorage.getItem("VITE_PRIVATE_API_KEY");
+const apiKey = localStorage.getItem("@VITE_PRIVATE_API_KEY");
 
 async function createRequestToken() {
     try {

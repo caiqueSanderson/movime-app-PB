@@ -1,6 +1,6 @@
 .page {
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     padding-top: 60px;
 }
 
@@ -10,8 +10,8 @@
 }
 
 .darkTheme {
-    background-color: #0D021A;
-    color: white;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
 }
 
 .containerStatistic {
@@ -32,7 +32,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 60px);
+    height: 100vh;
     text-align: center;
 }
 

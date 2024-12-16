@@ -1,123 +1,112 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #1a1a1a;
-    color: #e0e0e0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-}
-
 .card {
-    overflow: hidden;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    background-color: #fff;
-    border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  border-radius: 12px;
 
-    width: 35vw;
-    max-width: 200px;
+  width: 35vw;
+  max-width: 200px;
 
-    height: 40vh;
-    max-height: 450px;
+  height: 40vh;
+  max-height: 450px;
 
-    margin: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    position: relative;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  position: relative;
 }
 
 .card:hover {
-    transform: scale(1.05);
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
+  transform: scale(1.05);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.25);
 }
 
 .poster {
-    width: 100%;
-    height: 70%;
-    object-fit: cover;
-    border-bottom: 1px solid #ddd;
-    border-radius: 12px 12px 0 0;
-    transition: opacity 0.3s ease;
+  width: 100%;
+  height: 70%;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+  border-radius: 12px 12px 0 0;
+  transition: opacity 0.3s ease;
 }
 
 .card:hover .poster {
-    opacity: 0.9;
+  opacity: 0.9;
 }
 
 .title {
-    font-size: 0.8rem;
-    text-align: center;
-    margin: 10px 0;
-    color: #333;
-    font-weight: bold;
-
+  font-size: 0.8rem;
+  text-align: center;
+  margin: 10px 0;
+  color: #333;
+  font-weight: bold;
 }
 
 .detailsButton {
-    background-color: #e50914;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-radius: 25px;
-    margin-top: auto;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
-    position: absolute;
-    bottom: 20px;
+  background-color: #e50914;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 25px;
+  margin-top: auto;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+  position: absolute;
+  bottom: 5px;
 }
 
 .detailsButton:hover {
-    background-color: #bb0811;
+  background-color: #bb0811;
 }
 
 @media screen and (min-width: 600px) {
-    .card {
-        width: 20vw;
-        max-width: 250px;
-        height: 30vh;
-        max-width: 350px;
-    }
+  .card {
+    width: 25vw;
+    max-width: 250px;
+    height: 30vh;
+    max-height: 400px;
+  }
 
-    .card:hover {
-        z-index: 3;
-    }
+  .card:hover {
+    z-index: 3;
+  }
 
-    .poster {
-        height: 100%;
-    }
+  .poster {
+    height: 70%;
+  }
 
-    .title {
-        font-size: 1.3rem;
-        
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+  .title {
+    font-size: 1.3rem;
 
-    .detailsButton {
-        font-size: 1rem;
-        padding: 12px 25px;
-    }
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .detailsButton {
+    font-size: 1rem;
+    padding: 12px 25px;
+  }
 }
 
 @media screen and (min-width: 1025px) {
-    .card {
-        width: 15vw;
-        max-width: 350px;
-        height: 70vh;
-    }
-    .title{
-        display: none;
-    }
+  .card {
+    width: 15vw;
+    max-width: 350px;
+    height: 70vh;
+    max-height: 450px;
+  }
+
+  .poster {
+    height: 100%;
+  }
+
+  .title {
+    display: none;
+  }
 }

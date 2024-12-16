@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // import 'react-toastify/dist/ReactToastify.css';
+import Protected from "./routes/protected";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -13,7 +14,11 @@ import NotFound from "./pages/not-found";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home />,
+    element: (
+      <Protected>
+        <Home />
+      </Protected>
+    ),
   },
   {
     path: "/login",
@@ -21,11 +26,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/details/:id",
-    element: <Details />,
+    element: (
+      <Protected>
+        <Details />
+      </Protected>
+    ),
   },
   {
     path: "/my-movies",
-    element: <Movies />,
+    element: (
+      <Protected>
+        <Movies />
+      </Protected>
+    ),
   },
   {
     path: "*",

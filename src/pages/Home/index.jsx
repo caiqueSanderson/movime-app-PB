@@ -4,16 +4,17 @@ import axios from "axios";
 import Menu from "../../components/Menu";
 import Card from "../../components/Card";
 import Loading from "../../components/Loading";
+import { restoredTheme } from "../../services/theme";
 
 import styles from "./styles.module.css";
 
 // Substituindo variaveis de ambiente por localStorage
 // const token = import.meta.env.VITE_PRIVATE_TOKEN;
 
-const token = localStorage.getItem("VITE_PRIVATE_TOKEN");
+const token = localStorage.getItem("@VITE_PRIVATE_TOKEN");
 
 export default function Home() {
-  const [isLightTheme, setIsLigthTheme] = useState(true);
+  const [isLightTheme, setIsLigthTheme] = useState(false);
   const [dataMovies, setDataMovies] = useState({ results: [] });
   const [filtered, setFiltered] = useState([]);
   const [search, setSearch] = useState("");
@@ -78,6 +79,7 @@ export default function Home() {
 
   useEffect(() => {
     restoreData();
+    restoredTheme(setIsLigthTheme);
   }, []);
 
   return (
