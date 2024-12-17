@@ -1,9 +1,8 @@
 import axios from "axios";
 
-const apiKey = localStorage.getItem("@VITE_PRIVATE_API_KEY");
-
 async function createRequestToken() {
     try {
+        const apiKey = localStorage.getItem("@VITE_PRIVATE_API_KEY");
         const response = await axios.get(
             `https://api.themoviedb.org/3/authentication/token/new?api_key=${apiKey}`
         );
@@ -16,6 +15,7 @@ async function createRequestToken() {
 
 async function createSession(requestToken) {
     try {
+        const apiKey = localStorage.getItem("@VITE_PRIVATE_API_KEY");
         const response = await axios.post(
             `https://api.themoviedb.org/3/authentication/session/new?api_key=${apiKey}`,
             { request_token: requestToken }
@@ -29,6 +29,7 @@ async function createSession(requestToken) {
 
 async function getAccountId(sessionId) {
     try {
+        const apiKey = localStorage.getItem("@VITE_PRIVATE_API_KEY");
         const response = await axios.get(
             `https://api.themoviedb.org/3/account?api_key=${apiKey}&session_id=${sessionId}`
         );

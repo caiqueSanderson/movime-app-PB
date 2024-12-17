@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const API_KEY = localStorage.getItem("@VITE_PRIVATE_API_KEY");
 const url = "https://api.themoviedb.org/3";
 
 export async function getGenres() {
     try {
+        const API_KEY = localStorage.getItem("@VITE_PRIVATE_API_KEY");
         const response = await axios.get(`${url}/genre/movie/list`, {
             params: {
                 api_key: API_KEY,

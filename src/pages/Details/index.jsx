@@ -8,8 +8,6 @@ import axios from "axios";
 import { FaAngleLeft } from "react-icons/fa";
 import styles from "./styles.module.css";
 
-const token = localStorage.getItem("@VITE_PRIVATE_TOKEN");
-
 export default function Details() {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -24,6 +22,8 @@ export default function Details() {
 
   async function restoreData() {
     try {
+      const token = localStorage.getItem("@VITE_PRIVATE_TOKEN");
+
       const response = await axios.get(
         `https://api.themoviedb.org/3/movie/${id}?language=pt-BR`,
         {
@@ -58,7 +58,11 @@ export default function Details() {
 
   if (!dataMovie) {
     return (
-      <div className={`${styles.loading} ${isLightTheme ? styles.lightTheme : styles.darkTheme}`}>
+      <div
+        className={`${styles.loading} ${
+          isLightTheme ? styles.lightTheme : styles.darkTheme
+        }`}
+      >
         <p>Carregando...</p>
       </div>
     );

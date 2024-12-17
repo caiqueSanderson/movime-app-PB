@@ -3,7 +3,6 @@ import { FaClock } from "react-icons/fa";
 import styles from './styles.module.css';
 
 export default function CardRated({ data }) {
-    console.log(data)
     return (
         <div key={data.id} className={styles.card}>
             <img

@@ -32,13 +32,13 @@ export default function Movies() {
     restoredTheme(setIsLigthTheme);
 
     async function fetchRatedMovies() {
-      const sessionId = localStorage.getItem("@sessionID");
-      if (!sessionId) {
-        setAuthenticated(false);
-        return;
-      }
-
       try {
+        const sessionId = localStorage.getItem("@sessionID");
+        if (!sessionId) {
+          setAuthenticated(false);
+          return;
+        }
+
         setLoading(true);
         setAuthenticated(true);
         const [genresMap, ratedMovies] = await Promise.all([

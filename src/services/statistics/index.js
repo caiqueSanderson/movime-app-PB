@@ -7,7 +7,6 @@ export function calculateStats(moviesData) {
 
         movie.genre_ids.forEach((genreId) => {
             genreCount[genreId] = (genreCount[genreId] || 0) + 1;
-            console.log(genreCount)
         });
     });
 
@@ -17,8 +16,6 @@ export function calculateStats(moviesData) {
         .sort((a, b) => b[1] - a[1])
         .slice(0, 5)
         .map(([genreId, count]) => ({ genreId, count }));
-
-    console.log(sortedGenres)
 
     return { totalHours: totalHours.toFixed(2), topGenres: sortedGenres };
 };
