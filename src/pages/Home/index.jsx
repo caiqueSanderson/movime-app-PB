@@ -83,7 +83,11 @@ export default function Home() {
   }, []);
 
   return (
-    <div className={isLightTheme ? styles.ligthTheme : styles.darkTheme}>
+    <div
+      className={`${styles.page} ${
+        isLightTheme ? styles.ligthTheme : styles.darkTheme
+      }`}
+    >
       <Menu toggleTheme={toggleTheme} />
 
       <section className={styles.welcome}>

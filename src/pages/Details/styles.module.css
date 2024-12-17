@@ -17,6 +17,13 @@
   color: #f4f4f4;
 }
 
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
 .page {
   font-family: "Arial", sans-serif;
   padding: 20px;

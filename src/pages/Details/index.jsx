@@ -8,7 +8,7 @@ import axios from "axios";
 import { FaAngleLeft } from "react-icons/fa";
 import styles from "./styles.module.css";
 
-const token = localStorage.getItem("VITE_PRIVATE_TOKEN");
+const token = localStorage.getItem("@VITE_PRIVATE_TOKEN");
 
 export default function Details() {
   const { id } = useParams();
@@ -58,7 +58,7 @@ export default function Details() {
 
   if (!dataMovie) {
     return (
-      <div className={styles.loading}>
+      <div className={`${styles.loading} ${isLightTheme ? styles.lightTheme : styles.darkTheme}`}>
         <p>Carregando...</p>
       </div>
     );

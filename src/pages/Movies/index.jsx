@@ -75,9 +75,9 @@ export default function Movies() {
 
   return (
     <div
-      className={
-        (styles.page, isLigthTheme ? styles.ligthTheme : styles.darkTheme)
-      }
+      className={`${styles.page} ${
+        isLigthTheme ? styles.ligthTheme : styles.darkTheme
+      }`}
     >
       <Menu toggleTheme={toggleTheme} />
 
